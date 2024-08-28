@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
-// import comp1 from "../assets/sci-kumaraguru.jpg"
 
 export default function CardComponent({ compImg, name }) {
     return (
