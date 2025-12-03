@@ -17,7 +17,7 @@ export const SciNavbar = () => {
   };
 
   return (
-    <div className="bg-gray-50 text-blue-gray-900">
+    <div className="bg-gray-50 text-gray-900">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8 border-b">
         <Link href={"/"} onClick={closeMenu}>
           {/* for larger screens */}

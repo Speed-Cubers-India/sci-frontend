@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Box, Text } from "@chakra-ui/react";
 import {
   Table,
   TableBody,
@@ -6,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table";
+} from "../../../components/ui/table";
 import { useQuery } from '@tanstack/react-query';
-import { fetchRankings } from '../api/fetchRankings';
-import { formatAttemptResult } from '../lib/attempt';
+import { fetchRankings } from '../../../api/fetchRankings';
+import { formatAttemptResult } from '../../../lib/attempt';
 
 
 const RankingsTable = ({filterParams}) => { 
@@ -22,12 +23,12 @@ const RankingsTable = ({filterParams}) => {
     queryFn: () => fetchRankings()
   })
 
-  if (isFetching) return <p>Loading...</p>;
-  if (isError) return <p>Error: {isError}</p>;
+  if (isFetching) return <Text>Loading...</Text>;
+  if (isError) return <Text>Error: {isError}</Text>;
 
   return (
-    <div>
-      {data && data[filterString] ? <div className="rounded-md border">
+    <Box>
+      {data && data[filterString] ? <Box borderWidth="1px" borderRadius="md">
         <Table>
           <TableHeader>
             <TableRow>
@@ -50,8 +51,8 @@ const RankingsTable = ({filterParams}) => {
             ))}
           </TableBody>
         </Table>
-      </div> : <p>No data found</p>}
-    </div>
+      </Box> : <Text>No data found</Text>}
+    </Box>
   )
 }
 

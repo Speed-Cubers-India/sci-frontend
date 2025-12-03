@@ -32,8 +32,8 @@ const Competitions = () => {
   if (isError) return <p>Error: {isError}</p>;
 
   return (
-    <div className="space-y-10 py-10">
-      <UpComingCompetitions upComingCompetitons={upComingCompetitons} />
+    <div className="space-y-10">
+      <UpComingCompetitions upComingCompetitons={pastCompetitons} />
       <PastCompetitions pastCompetitons={pastCompetitons} />
     </div>
   );

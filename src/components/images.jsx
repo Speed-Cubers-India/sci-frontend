@@ -1,5 +1,4 @@
-import { ScrollArea, ScrollBar } from "./ui/scroll-area"
-import { Image } from "@nextui-org/react"
+import { Box, Image } from "@chakra-ui/react"
 
 const images = [
   {
@@ -26,21 +25,41 @@ const images = [
 
 export function ImagesComponent() {
   return (
-    <ScrollArea className="max-w-screen-lg mx-auto whitespace-nowrap rounded-md mb-5">
-      <div className="flex w-max space-x-4 pt-10">
+    <Box 
+      maxW="screen-lg" 
+      mx="auto" 
+      overflowX="auto" 
+      borderRadius="md" 
+      mb={5}
+      css={{
+            '&::-webkit-scrollbar': {
+              height: '5px',
+            },
+            '&::-webkit-scrollbar-track': {
+              borderRadius: '4px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#d3d3d7/30',
+              borderRadius: '4px',
+            }
+          }}
+    >
+      <Box display="flex" gap={4} pt={10} w="max-content">
         {images.map((image) => (
-          <figure key={image.id} className="shrink-0">
-            <div className="overflow-hidden rounded-md">
+          <Box key={image.id} flexShrink={0} className="mb-2">
+            <Box overflow="hidden" borderRadius="md">
               <Image
                 src={`https://sci-about-photos.s3.eu-north-1.amazonaws.com/${image.path}.jpg`}
                 alt="sci-image"
-                className="aspect-[3/4] h-[200px] md:h-[250px] w-[250px] md:w-[350px] object-cover"
+                h={{ base: "200px", md: "250px" }}
+                w={{ base: "250px", md: "350px" }}
+                objectFit="cover"
+                aspectRatio={3/4}
               />
-            </div>
-          </figure>
+            </Box>
+          </Box>
         ))}
-      </div>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
+      </Box>
+    </Box>
   )
 }
